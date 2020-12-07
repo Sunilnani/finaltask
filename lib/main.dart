@@ -38,6 +38,7 @@ class _MyAppState extends State<MyApp> {
                     children: [
                       Container(
                         child:Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text("Picking & Deliver",style: TextStyle(color: Colors.black26),),
                             SizedBox(height: 5,),
@@ -82,18 +83,24 @@ class _MyAppState extends State<MyApp> {
                        Container(
                          height:50,
                          width:270,
-                          child: TextField(
-                            decoration:InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(10)),
-                                borderSide: BorderSide(color: Colors.grey)
-                              ),
-                              fillColor: Colors.grey,
+                          child:TextField(
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
                               prefixIcon: Icon(Icons.search),
-                                hintText: "Send a service or landary",
-                              hintStyle:TextStyle(fontSize: 15.0, color: Colors.black26),
-                            ),
+                              hintText: "Search A service or laundry",
+                              hintStyle: TextStyle(color: Colors.grey,
+                                  fontSize: 15),
 
+                              enabledBorder: OutlineInputBorder(
+
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(
+
+                                      color: Colors.white
+                                  )
+                              ),
+                            ),
                           ),
 
                        ),
@@ -161,7 +168,7 @@ class _MyAppState extends State<MyApp> {
                         return Washing(
                           text: text[index],
                           image: image[index],
-                          clr: colors[index],
+                          color:colors[index] ,
                         );
                       },
                     ),
@@ -295,12 +302,12 @@ class Washing extends StatelessWidget {
   const Washing({
     this.image,
     this.text,
-    this.clr,
+    this.color
 
   }) ;
   final String image;
   final String text;
-  final Color clr;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -311,7 +318,7 @@ class Washing extends StatelessWidget {
         width: 100,
         margin: EdgeInsets.symmetric(horizontal: 4.0),
         decoration: BoxDecoration(
-            color:Colors.lightBlueAccent,
+            color: this.color,
             borderRadius: BorderRadius.circular(10)
         ),
            child:Column(
